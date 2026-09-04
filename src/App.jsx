@@ -1,122 +1,46 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import React from 'react';
+import Button from './components/ui/Button';
+import Card from './components/ui/Card';
+import Table from './components/ui/Table';
 
 function App() {
-  const [count, setCount] = useState(0)
+  // بيانات الجدول (مثال: قائمة طلاب أو مستخدمين)
+  const columns = ["Name", "Age", "Major"];
+  const data = [
+    { name: "Amira", age: 21, major: "Software Engineering" },
+    { name: "Omar", age: 22, major: "Computer Science" },
+    { name: "Sara", age: 20, major: "Information Technology" }
+  ];
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <h1>Assignment 2: Reusable Components</h1>
+
+      {/* 1. تجربة الـ Button (مطلوب مرتين على الأقل بـ props مختلفة) */}
+      <section style={{ marginBottom: '20px' }}>
+        <h2>Buttons Section</h2>
+        <Button text="Primary Click" onClick={() => alert('Primary clicked!')} variant="primary" />
+        <span style={{ margin: '0 10px' }}></span>
+        <Button text="Danger Action" onClick={() => alert('Danger clicked!')} variant="danger" disabled={false} />
       </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
+      {/* 2. تجربة الـ Card (مطلوب مرتين واستخدام children في واحدة على الأقل) */}
+      <section style={{ marginBottom: '20px' }}>
+        <h2>Cards Section</h2>
+        <Card title="Card One" description="This is a simple description for the first card." />
+        
+        <Card title="Card Two with Children">
+          <p style={{ color: 'blue' }}>This is nested content passed via children prop!</p>
+        </Card>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      {/* 3. تجربة الـ Table (ببيانات ذات معنى وstriped) */}
+      <section>
+        <h2>Table Section</h2>
+        <Table columns={columns} data={data} striped={true} />
+      </section>
+    </div>
+  );
 }
 
-export default App
+export default App;

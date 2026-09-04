@@ -39,7 +39,7 @@ function App() {
           
           <Card title="Active Task Alert">
             <div style={{ padding: '5px 0' }}>
-              <p style={{ margin: '0 0 10px 0', fontSize: '14px', color: '#e74c3c' }}>⚠️ Assignment 2 deadline is approaching.</p>
+              <p style={{ margin: '0 0 10px 0', fontSize: '14px', color: '#e74c3c' }}> Assignment 2 deadline is approaching.</p>
               <Button 
                 text="View Details" 
                 onClick={() => alert('Navigating to assignment specifications...')} 
